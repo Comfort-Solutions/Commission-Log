@@ -1,0 +1,8 @@
+body {
+  font-family: 'Saira', sans-serif;
+}
+
+#heading,
+#footer {
+  text-align: center;
+}

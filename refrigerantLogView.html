@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refrigerant Log</title>
+
+  <!--Google Fonts CDN-->
+  <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;500;800&display=swap" rel="stylesheet"
+    crossorigin="anonymous" />
+
+  <!--Bootstrap CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+  <!--Local Stylesheet-->
+  <link rel="stylesheet" href="styles.css" crossorigin="anonymous" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Ref-Log</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="index.html">Home</a>
+        <a class="nav-item nav-link" href="refrigerantLogAdd.html">Add</a>
+        <a class="nav-item nav-link active" href="refrigerantLogView.html">View <span class="sr-only">(current)</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1 id="heading">View Refrigerant Log</h1>
+  </header>
+
+  <h3>Instructions</h3>
+  <p>
+    Once you have emptied a refrigerant cylinder and are ready to send a
+    report, click on the check-boxes for the refrigerant logs for the type of
+    refrigerant you are creating a report for. Then click on the "Download
+    Selected" button at the bottom of the log to download a PDF copy of the
+    selected logs. It is recommended to save this file to your device in a
+    place where it can be retrieved, if needed. After you have downloaded the
+    file, send the file via email to "hjackson@comfort-solutions.net" with
+    your name, date the report was sent, type of refrigerant cylinder you are
+    requesting a replacement for, and the total lbs used out of the cylinder
+    v/s the net weight of the cylinder. Once you have downloaded a copy of the
+    log, you can use the "Delete Selected" button to remove the selected logs
+    so that you can start fresh logging a new cylinder.
+  </p>
+
+  <table id="logTable" class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Checked</th>
+        <th scope="col">Date</th>
+        <th scope="col">Job Name</th>
+        <th scope="col">Lbs</th>
+        <th scope="col">Oz</th>
+        <th scope="col">Refrigerant</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <!--Populated from localStorage-->
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <button id="downloadButton" type="button" class="btn btn-primary" onclick="showModal()">
+        Download Selected
+      </button>
+    </div>
+    <div class="col-sm-2">
+      <button id="clearButton" type="button" class="btn btn-danger" onclick="deleteSelectedLogs()">
+        Delete Selected
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="filteredTableModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="filteredTableModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filteredTableModalLabel">
+            Refrigerant Log
+          </h5>
+          <button type="button" class="close" id="xButton" data-dismiss="modal" aria-label="Close" onclick="reloadOnClose()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table id="filteredLogTable" class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Job Name</th>
+                <th scope="col">Lbs</th>
+                <th scope="col">Oz</th>
+                <th scope="col">Refrigerant</th>
+              </tr>
+            </thead>
+            <tbody id="filteredTbody">
+              <!--Populated from selectedLogs()-->
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button id="downloadNowButton" type="button" class="btn btn-primary"
+            onclick="downloadNow()">
+            Download Now
+          </button>
+          <button id="closeButton" type="button" class="btn btn-danger"
+            onclick="reloadOnClose()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div id="footer">
+      <h5>Mark A Bean</h5>
+      <h6>Comfort Solutions Inc.</h6>
+      <h6>Copyright 2020</h6>
+    </div>
+  </footer>
+
+  <!--Required JavaScript Below-->
+
+  <!--jsPDF CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+  <!--Dom-To-Image-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+
+  <!--JQuery-->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+
+  <!--popper-->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+
+  <!--Bootstrap-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
+
+  <!--Local JS-->
+  <script src="viewPage.js"></script>
+</body>
+
+</html>
