@@ -37,7 +37,6 @@ function setToStorage() {
   currentLogArray.push(refType);
   localStorage.setItem(`log ${localStorage.length + 1}`, JSON.stringify(currentLogArray));
   currentLogArray = [];
-  localStorage.removeItem('currentLogArray');
   
 }
 
@@ -56,5 +55,4 @@ form.addEventListener('submit', function (e) {
 
 closeButton.addEventListener("focusout", function () {
   clearButton.click();
-  console.log('clear button pressed')
 });
