@@ -8,3 +8,4 @@ deployment:
     - /bin/cp style.css $DEPLOYPATH
     - /bin/cp viewPage.js $DEPLOYPATH
     - /bin/cp addPage.js $DEPLOYPATH
+    - /bin/cp .cpanel.yml $DEPLOYPATH
