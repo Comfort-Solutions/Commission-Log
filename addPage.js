@@ -2,9 +2,9 @@
 
 const form = document.querySelector('form');
 const inputDate = document.getElementById('inputDate');
-const inputJobName = document.getElementById('inputJobName');
-const inputLb = document.getElementById('inputLb');
-const inputOz = document.getElementById('inputOz');
+const inputCustomerName = document.getElementById('inputCustomerName');
+const inputExpectedCommission = document.getElementById('inputExpectedCommission');
+const inputSalePrice  = document.getElementById('inputSalePrice');
 const addButton = document.getElementById('addButton');
 const clearButton = document.getElementById('clearButton');
 const closeButton = document.getElementById('closeButton');
@@ -12,29 +12,29 @@ const closeButton = document.getElementById('closeButton');
 //Submitted Data Variables
 
 let date = '';
-let jobName = '';
-let lb = 0;
-let oz = 0;
-let ref = '';
+let customerName = '';
+let salePrice = 0;
+let expectedCommission = 0;
+let commissionType = '';
 
 //Functions
 
 function addToLog() {
 
   date = inputDate.value;
-  jobName = inputJobName.value;
-  lb = inputLb.value;
-  oz = inputOz.value;
-  refType = document.querySelector('input[name = "refRadios"]:checked').value;
+  customerName = inputCustomerName.value;
+  salePrice = inputSalePrice.value;
+  expectedCommission = inputExpectedCommission.value;
+  commissionType = document.querySelector('input[name = "typeRadios"]:checked').value;
 }
 
 function setToStorage() {
   let currentLogArray = [];
   currentLogArray.push(date);
-  currentLogArray.push(jobName);
-  currentLogArray.push(lb);
-  currentLogArray.push(oz);
-  currentLogArray.push(refType);
+  currentLogArray.push(customerName);
+  currentLogArray.push(commissionType);
+  currentLogArray.push(salePrice);
+  currentLogArray.push(expectedCommission);
   localStorage.setItem(`log ${localStorage.length + 1}`, JSON.stringify(currentLogArray));
   currentLogArray = [];
   
