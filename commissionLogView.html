@@ -28,42 +28,30 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="index.html">Home</a>
-        <a class="nav-item nav-link" href="refrigerantLogAdd.html">Add</a>
-        <a class="nav-item nav-link active" href="refrigerantLogView.html">View <span class="sr-only">(current)</span>
+        <a class="nav-item nav-link" href="commissionLogAdd.html">Add</a>
+        <a class="nav-item nav-link active" href="commissionLogView.html">View <span class="sr-only">(current)</span>
         </a>
       </div>
     </div>
   </nav>
 
   <header>
-    <h1 id="heading">View Refrigerant Log</h1>
+    <h1 id="heading">View Commission Log</h1>
   </header>
 
   <h3>Instructions</h3>
   <p>
-    Once you have emptied a refrigerant cylinder and are ready to send a
-    report, click on the check-boxes for the refrigerant logs for the type of
-    refrigerant you are creating a report for. Then click on the "Download
-    Selected" button at the bottom of the log to download a PDF copy of the
-    selected logs. It is recommended to save this file to your device in a
-    place where it can be retrieved, if needed. After you have downloaded the
-    file, send the file via email to "hjackson@comfort-solutions.net" with
-    your name, date the report was sent, type of refrigerant cylinder you are
-    requesting a replacement for, and the total lbs used out of the cylinder
-    v/s the net weight of the cylinder. Once you have downloaded a copy of the
-    log, you can use the "Delete Selected" button to remove the selected logs
-    so that you can start fresh logging a new cylinder.
+    Every 2-4 weeks, check the boxes next to the log entries you wish to submit and press the "Download Now" button. Follow screen prompts to save the file to your device. Email the file to Holly -- hjackson@comfort-solutions.net.
   </p>
 
   <table id="logTable" class="table table-dark">
     <thead>
       <tr>
-        <th scope="col">Checked</th>
         <th scope="col">Date</th>
-        <th scope="col">Job Name</th>
-        <th scope="col">Lbs</th>
-        <th scope="col">Oz</th>
-        <th scope="col">Refrigerant</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Sale Price</th>
+        <th scope="col">Expected Commission</th>
       </tr>
     </thead>
     <tbody id="tbody">
@@ -91,7 +79,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="filteredTableModalLabel">
-            Refrigerant Log
+            Commission Log
           </h5>
           <button type="button" class="close" id="xButton" data-dismiss="modal" aria-label="Close" onclick="reloadOnClose()">
             <span aria-hidden="true">&times;</span>
@@ -102,10 +90,10 @@
             <thead>
               <tr>
                 <th scope="col">Date</th>
-                <th scope="col">Job Name</th>
-                <th scope="col">Lbs</th>
-                <th scope="col">Oz</th>
-                <th scope="col">Refrigerant</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Sale Price</th>
+                <th scope="col">Expected Commission</th>
               </tr>
             </thead>
             <tbody id="filteredTbody">

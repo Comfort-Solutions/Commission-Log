@@ -3,8 +3,8 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/user/public_html/
     - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp refrigerantLogAdd.html $DEPLOYPATH
-    - /bin/cp refrigerantLogView.html $DEPLOYPATH
+    - /bin/cp commissionLogAdd.html $DEPLOYPATH
+    - /bin/cp commissionLogView.html $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
     - /bin/cp viewPage.js $DEPLOYPATH
     - /bin/cp addPage.js $DEPLOYPATH

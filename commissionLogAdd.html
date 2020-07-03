@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Refrigerant Log</title>
+    <title>Commission Log</title>
 
     <!--Google Fonts CDN-->
     <link
@@ -25,7 +25,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html">Ref-Log</a>
+      <a class="navbar-brand" href="index.html">Commission</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -42,86 +42,85 @@
           <a class="nav-item nav-link" href="index.html"
             >Home</a
           >
-          <a class="nav-item nav-link active" href="refrigerantLogAdd.html">Add <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="commissionLogAdd.html">Add <span class="sr-only">(current)</span></a>
           <a
             class="nav-item nav-link"
-            href="refrigerantLogView.html"
+            href="commissionLogView.html"
             >View</a>
         </div>
       </div>
     </nav>
 
     <header>
-      <h1 id="heading">Add to Refrigerant Log</h1>
+      <h1 id="heading">Add to Commission Log</h1>
     </header>
 
     <h3>Instructions</h3>
-    <p>Select the date. Enter the job name. Enter the pounds and ounces that were removed from the cylinder. Select the refrigerant type. Click on "Add to Log". If you have want to go back to the main screen without saving the data, click on "Go Back".</p>
+    <p>Select the sale date. Enter the customer name. Enter the sale type (ie: furnace-only, whole system, etc). Enter the total sale price. Enter the commission total you are expecting to receive for the sale.</p>
 
     <!--Form Here for Data Input-->
     <form>
   <div class="form-group row">
-    <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+    <label for="inputDate" class="col-sm-2 col-form-label">Sale Date</label>
     <div class="col-sm-2">
       <input type="date" class="form-control" id="inputDate" required>
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputJobName" class="col-sm-2 col-form-label">Job Name</label>
+    <label for="inputCustomerName" class="col-sm-2 col-form-label">Customer Name</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control" id="inputJobName" required>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputLb" class="col-sm-2 col-form-label">Lb</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="inputLb" required>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputOz" class="col-sm-2 col-form-label">Oz</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="inputOz" required>
+      <input type="text" class="form-control" id="inputCustomerName" required>
     </div>
   </div>
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Refrigerant</legend>
+      <legend class="col-form-label col-sm-2 pt-0">Sale Type</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="refRadios" id="refRadio1" value="R410a" required>
-          <label class="form-check-label" for="refRadios1">
-            R-410a
+          <input class="form-check-input" type="radio" name="typeRadios" id="typeRadio1" value="System Install" required>
+          <label class="form-check-label" for="typeRadios1">
+            System Install
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="refRadios" id="refRadio2" value="R22">
-          <label class="form-check-label" for="refRadios2">
-            R-22
+          <input class="form-check-input" type="radio" name="typeRadios" id="typeRadio2" value="New Accessories">
+          <label class="form-check-label" for="typeRadios2">
+            New Accessories
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="refRadios" id="refRadio3" value="R404a">
-          <label class="form-check-label" for="refRadios3">
-            R-404a
+          <input class="form-check-input" type="radio" name="typeRadios" id="typeRadio3" value="New Maintenance Agreement">
+          <label class="form-check-label" for="typeRadios3">
+            New Maintenance Agreement
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="refRadios" id="refRadio4" value="R-134a">
-          <label class="form-check-label" for="refRadios4">
-            R-134a
+          <input class="form-check-input" type="radio" name="typeRadios" id="typeRadio4" value="Wi-fi Thermostat Upgrade">
+          <label class="form-check-label" for="typeRadios4">
+            Wi-fi-Thermostat Upgrade
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="refRadios" id="refRadio5" value="R407c">
-          <label class="form-check-label" for="refRadios5">
-            R-407c
+          <input class="form-check-input" type="radio" name="typeRadios" id="typeRadio5" value="Other">
+          <label class="form-check-label" for="typeRadios5">
+            Other
           </label>
         </div>
       </div>
     </div>
   </fieldset>
-  </div>
+   <div class="form-group row">
+     <label for="inputSalePrice" class="col-sm-2 col-form-label">Total Sale Price</label>
+     <div class="col-sm-2">
+       <input type="number" class="form-control" id="inputSalePrice" required>
+     </div>
+   </div>
+    <div class="form-group row">
+      <label for="inputExpectedCommission" class="col-sm-2 col-form-label">Expected Commission</label>
+      <div class="col-sm-2">
+        <input type="number" class="form-control" id="inputExpectedCommission" required>
+      </div>
+    </div>
   <div class="form-group row">
     <div class="col-sm-2">
       <button id="addButton" type="submit" class="btn btn-primary">Add to Log</button>
@@ -137,7 +136,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Refrigerant Log Added</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Commission Log Added</h5>
         <button type="button" class="close" id="closeButton" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

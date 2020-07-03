@@ -19,18 +19,18 @@ function populateLog() {
     let date = row.insertCell(1);
     $(date).addClass(`${localStorage.key(i)}`);
     date.innerHTML = loopArray[0]
-    let jobName = row.insertCell(2);
-    $(jobName).addClass(`${localStorage.key(i)}`);
-    jobName.innerHTML = loopArray[1];
-    let pounds = row.insertCell(3);
-    $(pounds).addClass(`${localStorage.key(i)}`);
-    pounds.innerHTML = loopArray[2];
-    let ounces = row.insertCell(4);
-    $(ounces).addClass(`${localStorage.key(i)}`);
-    ounces.innerHTML = loopArray[3];
-    let refrigerant = row.insertCell(5);
-    $(refrigerant).addClass(`${localStorage.key(i)}`);
-    refrigerant.innerHTML = loopArray[4];
+    let customerName = row.insertCell(2);
+    $(customerName).addClass(`${localStorage.key(i)}`);
+    customerName.innerHTML = loopArray[1];
+    let commissionType = row.insertCell(3);
+    $(commissionType).addClass(`${localStorage.key(i)}`);
+    commissionType.innerHTML = loopArray[2];
+    let salePrice = row.insertCell(4);
+    $(salePrice).addClass(`${localStorage.key(i)}`);
+    salePrice.innerHTML = loopArray[3];
+    let expectedCommission = row.insertCell(5);
+    $(expectedCommission).addClass(`${localStorage.key(i)}`);
+    expectedCommission.innerHTML = loopArray[4];
   };
 };
 
@@ -49,14 +49,14 @@ function populateFilteredLogTable() {
     let row = filteredTbody.insertRow();
     let filteredDate = row.insertCell(0);
     filteredDate.innerHTML = filteredLogArray[0]
-    let filteredJobName = row.insertCell(1);
-    filteredJobName.innerHTML = filteredLogArray[1];
-    let filteredPounds = row.insertCell(2);
-    filteredPounds.innerHTML = filteredLogArray[2];
-    let filteredOunces = row.insertCell(3);
-    filteredOunces.innerHTML = filteredLogArray[3];
-    let filteredRefrigerant = row.insertCell(4);
-    filteredRefrigerant.innerHTML = filteredLogArray[4];
+    let filteredCustomerName = row.insertCell(1);
+    filteredCustomerName.innerHTML = filteredLogArray[1];
+    let filteredType = row.insertCell(2);
+    filteredType.innerHTML = filteredLogArray[2];
+    let filteredSalePrice = row.insertCell(3);
+    filteredSalePrice.innerHTML = filteredLogArray[3];
+    let filteredExpectedCommission = row.insertCell(4);
+    filteredExpectedCommission.innerHTML = filteredLogArray[4];
   }
 }
 
@@ -83,7 +83,7 @@ function downloadNow() {
     .then((blob) => {
       let pdf = new jsPDF('1', 'pt', [$('#filteredLogTable').width(), $('#filteredLogTable').height()]);
       pdf.addImage(blob, "PNG", 0, 0, $('#filteredLogTable').width(), $('#filteredLogTable').height());
-      pdf.save('refrigerant-log.pdf');
+      pdf.save('commission-log.pdf');
     });
 }
 
